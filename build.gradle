@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+
+        maven { url 'http://repo.spring.io/plugins-release' }
+
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'com.gradle.plugin-publish'
+apply plugin: 'maven-publish'
+
+version = '0.0.2'
+group = 'io.github.makelefy'
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy() //not needed for Java plugins
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    testCompile 'junit:junit:4.12'
+
+    // The production code uses Guava
+    compile 'com.google.guava:guava:20.0'
+
+    // Use the latest Groovy version for Spock testing
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+
+    // Use the awesome Spock testing and specification framework even with Java
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'junit:junit:4.12'
+}
+
+
+pluginBundle {
+    website = 'http://www.gradle.org/'
+    vcsUrl = 'https://github.com/gradle/gradle'
+    description = 'This plugin applies best practices and conventions for developing Spring Boot microservices'
+
+    plugins {
+        gradleSpringBootMicroservicePlugin {
+            id = 'io.github.makelefy.gradle-spring-boot-microservice-plugin'
+            displayName = 'Spring Boot microservices plugin'
+            tags = ['spring boot', 'microservices', 'gradle', 'plugin']
+            version = "${project.version}"
+        }
+    }
+
+/*
+  mavenCoordinates {
+    groupId = "io.github.makelefy"
+    artifactId = "gradle-spring-boot-microservice-plugin"
+    version = "0.0.1"
+  }
+*/
+
+
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId 'gradle.plugin.io.github.makelefy'
+                from components.java
+            }
+        }
+    }
+}
