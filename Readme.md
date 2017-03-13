@@ -10,18 +10,17 @@ Add this configuration to use this plugin:
 
     buildscript {
         repositories {
-            jcenter()
+            mavenLocal()
             maven { url "https://plugins.gradle.org/m2/" }
-            maven { url "http://repo.spring.io/milestone" }
         }
-
+    
         dependencies {
-            classpath(
-                'gradle.plugin.de.makelefy:gradle-spring-boot-microservice-plugin:0.0.1',
-            )
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
+            classpath "gradle.plugin.io.github.makelefy:gradle-spring-boot-microservice-plugin:+"
         }
     }
-    apply plugin: 'io.github.makelefy.gradle-spring-boot-microservice-plugin:0.0.1'
+    
+    apply plugin: 'io.github.makelefy.gradle-spring-boot-microservice-plugin'
     
 ## Preconditions
 - Support of [Spring Boot](http://projects.spring.io/spring-boot/) 1.5.2.RELEASE
