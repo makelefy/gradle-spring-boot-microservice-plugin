@@ -19,7 +19,6 @@ apply plugin: 'maven-publish'
 
 version = '0.0.2'
 group = 'io.github.makelefy'
-sourceCompatibility = 1.8
 
 repositories {
     jcenter()
