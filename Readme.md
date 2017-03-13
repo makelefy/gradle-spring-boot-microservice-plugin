@@ -1,4 +1,4 @@
-Gradle Spring Boot Plugin for microservices![Build Status](...)
+Gradle Spring Boot Plugin for microservices![Build Status](https://travis-ci.org/makelefy/gradle-spring-boot-microservice-plugin.svg?branch=master)
 ========================================
 
 
