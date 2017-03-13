@@ -1,1 +1,3 @@
 language: groovy
+script:
+- clean test build
